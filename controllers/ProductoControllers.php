@@ -41,6 +41,23 @@ class ProductoController
         exit;
     }
 
+    public function editar(): void
+    {
+        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        if ($id === false || $id === null) {
+            header('Location: index.php');
+            exit;
+        }
+
+        $producto = $this->model->findById($id);
+        if (!$producto) {
+            header('Location: index.php');
+            exit;
+        }
+
+        $productos = $this->model->getAll();
+        require __DIR__ . '/../views/productos.php';
+    }
 
     public function actualizar(): void
     {

@@ -16,14 +16,19 @@ public function getAll():array{
 
 }
 
+public function findById(int $id): ?array{
+    $stmt = $this->db->prepare("SELECT id, nombre, precio, cantidadStock, estado from productos WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetch();
+}
+
 // Método para crear un nuevo accesorio
 public function create (array $data):bool{
-    $stmt=$this->db->prepare("INSERT INTO productos (nombre, precio, cantidadStock, estado) VALUES (:nombre, :precio, :cantidadStock, :estado)");
+    $stmt=$this->db->prepare("INSERT INTO productos (nombre, precio, cantidadStock, estado) VALUES (:nombre, :precio, :cantidadStock, 1)");
 return $stmt->execute([
     ':nombre' => $data['nombre'],
     ':precio' => $data['precio'],
-    ':cantidadStock' => $data['cantidadStock'],
-    ':estado' => $data['estado']
+    ':cantidadStock' => $data['cantidadStock']
 ]);
 
 
@@ -40,13 +45,12 @@ public function delete(int $id):bool{
 //Función para actualizar un usuario existente
 function update(int $id, array $data):bool
 {
-    $stmt = $this->db->prepare("UPDATE productos SET nombre = :nombre, precio = :precio, cantidadStock = :cantidadStock, estado = :estado WHERE id = :id");
+    $stmt = $this->db->prepare("UPDATE productos SET nombre = :nombre, precio = :precio, cantidadStock = :cantidadStock, estado = 1 WHERE id = :id");
     return $stmt->execute([
         ':id' => $id,
         ':nombre' => $data['nombre'],
         ':precio' => $data['precio'],
-        ':cantidadStock' => $data['cantidadStock'],
-        ':estado' => $data['estado']
+        ':cantidadStock' => $data['cantidadStock']
     ]);
 }
 
