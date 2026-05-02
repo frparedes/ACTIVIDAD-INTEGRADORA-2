@@ -12,7 +12,6 @@ require_once __DIR__.'/controllers/VentasController.php';
     $controllerVenta = new VentasController($ventaModel); //Creo una instancia de tipo VentasController y le envio el modelo
 
 
-    action: 
     $action= $_GET['action'] ?? 'index';
 
     switch ($action)
