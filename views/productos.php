@@ -2,12 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mantenimiento de Productos de Fiesta</title>
+    <title>Empresa Productos de Fiesta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
 <div class="container mt-5">
+    <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid justify-content-start">
+            <a class="btn btn-outline-success me-2" href="index.php?action=index">Productos</a>
+            <a class="btn btn-outline-success me-2" href="index.php?action=indexVentas">Ventas</a>
+        </form>
+    </nav>
 
     <div class="card shadow">
         <div class="card-header bg-primary text-white">

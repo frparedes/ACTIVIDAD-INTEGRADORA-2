@@ -41,7 +41,9 @@ require_once __DIR__.'/controllers/VentasController.php';
         case 'eliminarVenta':
             $controllerVenta->eliminar();
             break;
-
+        case 'indexVentas':
+            $controllerVenta-> index();
+            break;
 
     }
 
