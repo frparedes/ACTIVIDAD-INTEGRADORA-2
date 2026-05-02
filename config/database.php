@@ -2,7 +2,7 @@
 class Database{
 
 private $host = "localhost";
-private $db_name = "claseecotect";
+private $db_name = "party";
 private $user='root';
 private $pass='';
 private $charset = 'utf8mb4';
