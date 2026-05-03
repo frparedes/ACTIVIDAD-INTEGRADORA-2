@@ -54,6 +54,13 @@ public function delete(int $id):bool{
 //Función para actualizar un usuario existente
 function update(int $id, array $data):bool
 {
+    $stmtP = $this->db->prepare("SELECT precio from productos WHERE id = :id");
+    $stmtP->execute([':id' => $data['idProducto']]);
+    $precio = $stmtP->fetch();
+
+    $total = $precio['precio'] * $data['cantidad'];
+    $data['total'] = $total;
+    
     $stmt = $this->db->prepare("UPDATE ventas SET nombreCliente = :nombreCliente, idProducto = :idProducto, cantidad = :cantidad, total = :total WHERE id = :id");
     return $stmt->execute([
         ':id' => $id,
