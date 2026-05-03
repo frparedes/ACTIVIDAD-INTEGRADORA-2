@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__.'/config/database.php';
-require_once __DIR__.'/controllers/ProductoControllers.php';
-require_once __DIR__.'/controllers/VentasController.php';
+require_once __DIR__.'/../config/database.php';
+require_once __DIR__.'/../controllers/ProductoControllers.php';
+require_once __DIR__.'/../controllers/VentasController.php';
 
 
     $database = new Database(); //Creo instancia de tipo Database 
@@ -9,31 +9,18 @@ require_once __DIR__.'/controllers/VentasController.php';
     $productoModel= new Producto($pdo); //Creo una instancia de tipo Producto
     $controller= new ProductoController($productoModel); //Creo una instancia de tipo ProductosController y le envio el modelo
     $ventaModel= new Ventas($pdo); //Creo una instancia de tipo Ventas
-    $controllerVenta = new VentasController($ventaModel); //Creo una instancia de tipo VentasController y le envio el modelo
+    $controllerVenta = new VentasController($ventaModel, $productoModel); //Creo una instancia de tipo VentasController y le envio el modelo
 
 
     $action= $_GET['action'] ?? 'index';
 
     switch ($action)
     {
-        case 'guardarProducto':
-            $controller->guardar();
-            break;
-        case 'editarProducto':
-            $controller-> editar();
-            break;
-        case 'actualizarProducto':
-            $controller-> actualizar();
-            break;
-        case 'eliminarProducto':
-            $controller-> eliminar();
-            break;
-        case 'index':
-            $controller-> index();
-            break;
-
         case 'guardarVenta':
             $controllerVenta->guardar();
+            break;
+        case 'editarVenta':
+            $controllerVenta-> editar();
             break;
         case 'actualizarVenta':
             $controllerVenta->actualizar();
@@ -41,7 +28,7 @@ require_once __DIR__.'/controllers/VentasController.php';
         case 'eliminarVenta':
             $controllerVenta->eliminar();
             break;
-        case 'indexVentas':
+        case 'index':
             $controllerVenta-> index();
             break;
 

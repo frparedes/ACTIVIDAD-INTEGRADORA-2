@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Empresa Productos de Fiesta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-light">
 
@@ -11,7 +12,7 @@
     <nav class="navbar bg-body-tertiary">
         <form class="container-fluid justify-content-start">
             <a class="btn btn-outline-success me-2" href="index.php?action=index">Productos</a>
-            <a class="btn btn-outline-success me-2" href="index.php?action=indexVentas">Ventas</a>
+            <a class="btn btn-outline-success me-2" href="indexVentas.php?action=index">Ventas</a>
         </form>
     </nav>
 
@@ -46,7 +47,7 @@
                 <div class="alert alert-danger">Error al eliminar el producto.</div>
             <?php endif; ?>
 
-            <form method="POST" action="index.php?action=<?= isset($producto) && $producto ? 'actualizarProducto' : 'guardarProducto' ?>">
+            <form name="formProducto" method="POST" action="index.php?action=<?= isset($producto) && $producto ? 'actualizarProducto' : 'guardarProducto' ?>">
                 <?php if (!empty($producto)): ?>
                     <input type="hidden" name="id" value="<?= htmlspecialchars($producto['id']) ?>">
                 <?php endif; ?>
@@ -59,22 +60,25 @@
 
                     <div class="col-md-6 mb-3">
                         <label>Precio</label>
-                        <input type="number" name="precio" step="any" class="form-control" required value="<?= $producto['precio'] ?? '0.00' ?>">
+                        <input type="number" name="precio" id="precio" step="any" class="form-control" required value="<?= $producto['precio'] ?? '0.00' ?>">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label>Cantidad Stock</label>
-                        <input type="number" name="cantidadStock" class="form-control" required value="<?= htmlspecialchars($producto['cantidadStock'] ?? '') ?>">
+                        <input type="number" name="cantidadStock" id="cantidadStock" class="form-control" required value="<?= htmlspecialchars($producto['cantidadStock'] ?? '') ?>">
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success"><?= !empty($producto) ? 'actualizar' : 'guardar' ?></button>
+                <button id="btnGuardar" type="submit" class="btn btn-success"><?= !empty($producto) ? 'actualizar' : 'guardar' ?></button>
                 <?php if (!empty($producto)): ?>
                     <a href="index.php" class="btn btn-secondary ms-2">Cancelar</a>
                 <?php endif; ?>
             </form>
+
+            <div id="mensaje" class="mt-2"></div>
+
 
             <hr>
 
@@ -111,6 +115,6 @@
     </div>
 
 </div>
-
+<script src="../js/validaciones.js" ></script>
 </body>
 </html>

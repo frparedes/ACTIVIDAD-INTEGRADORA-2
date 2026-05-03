@@ -16,14 +16,28 @@ public function getAll():array{
 
 }
 
+public function findById(int $id): ?array{
+    $stmt = $this->db->prepare("SELECT id, nombreCliente, idProducto, cantidad, total from ventas WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetch();
+}
+
+
 // Método para crear un nuevo accesorio
 public function create (array $data):bool{
+    $stmtP = $this->db->prepare("SELECT precio from productos WHERE id = :id");
+    $stmtP->execute([':id' => $data['idProducto']]);
+    $precio = $stmtP->fetch();
+
+    $total = $precio['precio'] * $data['cantidad'];
+    $data['total'] = $total;
+
     $stmt=$this->db->prepare("INSERT INTO ventas (nombreCliente, idProducto, cantidad, total) VALUES (:nombreCliente, :idProducto, :cantidad, :total)");
-return $stmt->execute([
-    ':nombreCliente' => $data['nombreCliente'],
-    ':idProducto' => $data['idProducto'],
-    ':cantidad' => $data['cantidad'],
-    ':total' => $data['total']
+    return $stmt->execute([
+        ':nombreCliente' => $data['nombreCliente'],
+        ':idProducto' => $data['idProducto'],
+        ':cantidad' => $data['cantidad'],
+        ':total' => $data['total']
 ]);
 
 

@@ -15,7 +15,7 @@ class ProductoController
     {
         $productos = $this->model->getAll();  // CONSULTA LOS DATOS
         $producto = null;
-        require __DIR__ . '/../views/productos.php'; // MUESTRA LA VISTA
+        require __DIR__ . '/../public/productos.php'; // MUESTRA LA VISTA
     }
 
     public function guardar(): void
@@ -56,7 +56,7 @@ class ProductoController
         }
 
         $productos = $this->model->getAll();
-        require __DIR__ . '/../views/productos.php';
+        require __DIR__ . '/../public/productos.php';
     }
 
     public function actualizar(): void
