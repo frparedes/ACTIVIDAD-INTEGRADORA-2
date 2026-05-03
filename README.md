@@ -47,7 +47,7 @@ Navegador web
 Servidor local (XAMPP, WAMP o similar)
 
 Pasos para instalacion
-1. git clone https://github.com/tu-usuario/ACTIVIDAD-INTEGRADORA-2.git
+1. git clone https://github.com/frparedes/ACTIVIDAD-INTEGRADORA-2.git
 2. copiar la carpeta en C:\xampp\htdocs\
 3. iniciar xampp con apache mySql
 4. crear la base datos con el script que se encuentra en la carpeta database
