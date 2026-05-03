@@ -56,3 +56,6 @@ Pasos para instalacion
 
 
 
+Capturas de pantalla
+Se encuentra en la carpeta screenshots donde se detalla la creacion del producto y venta
+
