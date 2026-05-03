@@ -41,10 +41,10 @@ Ejecucion del proyecto con xampp
 http://localhost/ACTIVIDAD-INTEGRADORA-2/public/index.php
 
 Requisitos
-PHP 8 o superior
-MySQL
-Navegador web
-Servidor local (XAMPP, WAMP o similar)
+- PHP 8 o superior
+- MySQL
+- Navegador web
+- Servidor local (XAMPP, WAMP o similar)
 
 Pasos para instalacion
 1. git clone https://github.com/frparedes/ACTIVIDAD-INTEGRADORA-2.git
